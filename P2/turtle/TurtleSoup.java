@@ -6,6 +6,7 @@ package turtle;
 import java.util.List;
 import java.util.Set;
 import java.util.ArrayList;
+import java.math.*;
 
 public class TurtleSoup {
 
@@ -35,7 +36,9 @@ public class TurtleSoup {
      * @return angle in degrees, where 0 <= angle < 360
      */
     public static double calculateRegularPolygonAngle(int sides) {
-        throw new RuntimeException("implement me!");
+        double ans;
+        ans=(sides-2)*180/sides;
+        return Math.round(ans);
     }
 
     /**
@@ -49,7 +52,9 @@ public class TurtleSoup {
      * @return the integer number of sides
      */
     public static int calculatePolygonSidesFromAngle(double angle) {
-        throw new RuntimeException("implement me!");
+        double ans;
+        ans=360.0/angle;
+        return (int)ans;
     }
 
     /**
@@ -62,7 +67,12 @@ public class TurtleSoup {
      * @param sideLength length of each side
      */
     public static void drawRegularPolygon(Turtle turtle, int sides, int sideLength) {
-        throw new RuntimeException("implement me!");
+        double angle=calculateRegularPolygonAngle(sides);
+        for(int i=1;i<=sides;i++)
+        {
+        	turtle.forward(sideLength);
+        	turtle.turn(180-angle);
+        }
     }
 
     /**
